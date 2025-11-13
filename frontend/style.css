@@ -1,0 +1,185 @@
+/* Night Tokyo фон с градиентом и анимацией */
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(-45deg, #0f111a, #1a1c2f, #2b0f3a, #0f111a);
+    background-size: 400% 400%;
+    animation: gradientShift 20s ease infinite;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    min-height: 100vh;
+    margin: 0;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Заголовок с пульсацией */
+.note-header {
+    font-weight: 900;
+    color: #ff77aa;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: clamp(28px, 6vw, 60px);
+    text-shadow:
+        0 0 10px rgba(255, 119, 170, 0.7),
+        0 0 20px rgba(255, 51, 102, 0.4);
+    animation: headerPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes headerPulse {
+    0% {
+        transform: scale(1);
+        text-shadow:
+            0 0 10px rgba(255, 119, 170, 0.7),
+            0 0 20px rgba(255, 51, 102, 0.4);
+    }
+    50% {
+        transform: scale(1.05);
+        text-shadow:
+            0 0 20px rgba(255, 119, 170, 0.9),
+            0 0 30px rgba(255, 51, 102, 0.6);
+    }
+    100% {
+        transform: scale(1);
+        text-shadow:
+            0 0 10px rgba(255, 119, 170, 0.7),
+            0 0 20px rgba(255, 51, 102, 0.4);
+    }
+}
+
+/* Контейнер полей ввода */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Поля ввода с эффектами при наведении и фокусе */
+input,
+textarea {
+    width: 400px;
+    padding: 14px;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    font-size: 16px;
+    background: rgba(28, 31, 46, 0.9);
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s ease;
+}
+
+input:hover,
+textarea:hover,
+input:focus,
+textarea:focus {
+    outline: none;
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 51, 102, 0.8);
+    border-image: linear-gradient(45deg, #ff3366, #ff77aa) 1;
+    border-width: 2px;
+    border-style: solid;
+}
+
+/* Кнопка добавления */
+button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 12px;
+    background: #ff3366;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 51, 102, 0.5);
+}
+
+button:hover {
+    background: #ff5599;
+    transform: scale(1.08) rotate(-1deg);
+    box-shadow: 0 8px 25px rgba(255, 51, 102, 0.8);
+}
+
+/* Контейнер заметок */
+#notes {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    gap: 15px;
+}
+
+/* Одиночная заметка с анимацией появления и удаления */
+.note {
+    background: rgba(28, 31, 46, 0.95);
+    padding: 20px;
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transform: translateY(-20px);
+    transition:
+        all 0.5s ease,
+        box-shadow 0.3s ease;
+}
+
+.note.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.note.hide {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+    transition: all 0.5s ease;
+}
+
+.note strong {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #ff77aa;
+}
+
+.note p {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    color: #ddd;
+}
+
+/* Кнопки заметки */
+.note .buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.note .buttons button {
+    padding: 5px 12px;
+    font-size: 14px;
+    background: #ff3366;
+    color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(255, 51, 102, 0.5);
+    transition: 0.2s all;
+}
+
+.note .buttons button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(255, 51, 102, 0.7);
+}

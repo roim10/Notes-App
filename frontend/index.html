@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Notes App</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <h1 class="note-header">Мои заметки</h1>
+        <div class="input-group">
+            <input id="title" placeholder="Заголовок" />
+            <textarea id="content" placeholder="Текст заметки"></textarea>
+            <button onclick="addNote()">Добавить</button>
+        </div>
+        <div id="notes"></div>
+        <script src="app.js"></script>
+    </body>
+</html>
